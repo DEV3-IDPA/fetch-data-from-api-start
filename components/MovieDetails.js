@@ -9,16 +9,7 @@ const MovieDetails = props => {
 
   const getMovieDetailsById = async () => {
     try {
-      const url = encodeURI("https://data-imdb1.p.rapidapi.com/movie/id/" + props.movieId + "/")
-      const response = await fetch(url, {
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "moviesminidatabase.p.rapidapi.com",
-          "x-rapidapi-key": apiKey
-        }
-      })
-      const json = await response.json();
-      setMovieDetails(json.results);
+      //todo: fetch movie details by movieId
     } catch (error) {
       console.error(error);
     }
@@ -30,16 +21,16 @@ const MovieDetails = props => {
 
   return (
     <ScrollView>
-      <Image
+      {/* <Image
         style={styles.filmPoster}
         source={{
           uri: movieDetails.banner,
         }}
-      />
-      <Text style={styles.title}>{movieDetails.title}</Text>
+      /> */}
+      <Text style={styles.title}>** TITLE **</Text>
       <View style={styles.details}>
-        <Text>{movieDetails.plot}</Text>
-        <Text style={styles.release}>release: {movieDetails.release}</Text>
+        <Text>** PLOT **</Text>
+        <Text style={styles.release}>release: ** RELEASE **</Text>
       </View>
 
     </ScrollView>

@@ -1,3 +1,3 @@
-let apiKey = "<API KEY HIER INVULLEN>"
+let apiKey = "<API GOES HERE>"
 export default apiKey;
-//kopieer deze file en hernoem naar apiKey.js
+//copy this file and rename to apiKey.js

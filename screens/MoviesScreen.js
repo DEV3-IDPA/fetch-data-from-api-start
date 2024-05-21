@@ -10,41 +10,22 @@ const MoviesScreen = ({ navigation }) => {
 
   const getMoviesByRating = async () => {
     try {
-      const response = await fetch("https://moviesminidatabase.p.rapidapi.com/movie/order/byRating/", {
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "moviesminidatabase.p.rapidapi.com",
-          "x-rapidapi-key": apiKey
-        }
-      })
-      const json = await response.json();
-      console.log(json);
-      setMovies(json.results);
+      //todo: fetch movies by rating
     } catch (error) {
       console.error(error);
     }
   }
 
   useEffect(() => {
-    getMoviesByRating();//laad upcomming movies wanneer het scherm laadt
+    getMoviesByRating();//load upcoming movies when the screen loads
   }, []);
 
-  //laad search results wanneer je in textinput typt
-  const getMoviesByTitleSearch = async (enteredText) => {//argument meegegeven door onChangeText
+  //load search results while typing in text input
+  const getMoviesByTitleSearch = async (enteredText) => {//argument provided by onChangeText (TextInput)
     try {
-      if (enteredText.length > 3) {
-        const url = encodeURI("https://moviesminidatabase.p.rapidapi.com/movie/imdb_id/byTitle/" + enteredText + "/");
-        console.log(url);
-        const response = await fetch(url, {
-          "method": "GET",
-          "headers": {
-            "x-rapidapi-host": "moviesminidatabase.p.rapidapi.com",
-            "x-rapidapi-key": apiKey
-          }
-        })
-        const json = await response.json();
-        console.log(json);
-        setMovies(json.results);
+      if (enteredText.length >= 3) {//only start fetching from a prompt of 3 or more letters
+        //todo: fetch movies by rating
+
       }
     } catch (error) {
       console.error(error);
@@ -56,17 +37,16 @@ const MoviesScreen = ({ navigation }) => {
       <TextInput
         placeholder="search movie"
         style={styles.input}
-        onChangeText={getMoviesByTitleSearch}//geeft argument enteredText mee
+      /* todo: while typing invoke getMoviesByTitleSearch */
       />
       <FlatList
         data={movies}
-        keyExtractor={item => item.imdb_id}//gebruik imdb_id als key voor de flatlist
+        keyExtractor={item => item.imdb_id}//use imdb_id as unique-key for each MovieItem in the FlatList
         renderItem={({ item }) => (
           <MovieItem
             id={item.imdb_id}
             title={item.title}
             navigation={navigation}
-            onSelectMovie={(selectedId) => { navigation.navigate('Details', { movieId: selectedId }) }}
           />
         )}
       />

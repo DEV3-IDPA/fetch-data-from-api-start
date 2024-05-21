@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const MovieItem = props => {
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={() => props.onSelectMovie(props.id)}>
+    <TouchableOpacity activeOpacity={0.5} onPress={() => props.navigation.navigate('Details', { movieId: props.id })}>
       <View style={styles.listItem}>
-        <Text>{props.title}</Text>
+        <Text>** TITLE **</Text>
       </View>
     </TouchableOpacity >
 
